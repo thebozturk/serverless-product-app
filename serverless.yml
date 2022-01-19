@@ -71,35 +71,35 @@ provider:
 
 functions:
   createProduct:
-    handler: ./src/handler.createProduct
+    handler: src/handler.createProduct
     events:
       - httpApi:
           path: /product
           method: post
   getProduct:
-    handler: ./src/handler.getProduct
+    handler: src/handler.getProduct
     events:
       - httpApi:
           path: /product/{id}
           method: get
-  # updateProduct:
-  #   handler: src/handlers.updateProduct
-  #   events:
-  #     - httpApi:
-  #         path: /product/{id}
-  #         method: put
-  # deleteProduct:
-  #   handler: src/handlers.deleteProduct
-  #   events:
-  #     - httpApi:
-  #         path: /product/{id}
-  #         method: delete
-  # listProduct:
-  #   handler: src/handlers.listProduct
-  #   events:
-  #     - httpApi:
-  #         path: /products
-  #         method: get
+  updateProduct:
+    handler: src/handler.updateProduct
+    events:
+      - httpApi:
+          path: /product/{id}
+          method: put
+  deleteProduct:
+    handler: src/handler.deleteProduct
+    events:
+      - httpApi:
+          path: /product/{id}
+          method: delete
+  listProduct:
+    handler: src/handler.listProduct
+    events:
+      - httpApi:
+          path: /products
+          method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
