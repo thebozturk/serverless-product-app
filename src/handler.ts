@@ -3,7 +3,7 @@ import AWS from "aws-sdk";
 import { v4 } from "uuid";
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-
+const tableName = "ProductsTable";
 export const createProduct = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
@@ -18,7 +18,7 @@ export const createProduct = async (
     })
     .promise();
   return {
-    statusCode: 200,
+    statusCode: 201,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -27,5 +27,31 @@ export const createProduct = async (
         "Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!",
       input: event,
     }),
+  };
+};
+
+export const getProduct = async (
+  event: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> => {
+  const id = event.pathParameters?.id;
+
+  const output = await docClient
+    .get({
+      TableName: tableName,
+      Key: {
+        productID: id,
+      },
+    })
+    .promise();
+
+  if (output.Item) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({ error: "Product not found" }),
+    };
+  }
+  return {
+    statusCode: 200,
+    body: JSON.stringify(output.Item),
   };
 };
