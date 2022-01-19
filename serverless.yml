@@ -13,8 +13,8 @@
 
 service: products-api
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: products-api
+org: bugrahanozturk
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -71,35 +71,35 @@ provider:
 
 functions:
   createProduct:
-    handler: src/handlers.createProduct
+    handler: ./src/handler.createProduct
     events:
       - httpApi:
           path: /product
           method: post
   getProduct:
-    handler: src/handlers.getProduct
+    handler: ./src/handler.getProduct
     events:
       - httpApi:
           path: /product/{id}
           method: get
-  updateProduct:
-    handler: src/handlers.updateProduct
-    events:
-      - httpApi:
-          path: /product/{id}
-          method: put
-  deleteProduct:
-    handler: src/handlers.deleteProduct
-    events:
-      - httpApi:
-          path: /product/{id}
-          method: delete
-  listProduct:
-    handler: src/handlers.listProduct
-    events:
-      - httpApi:
-          path: /products
-          method: get
+  # updateProduct:
+  #   handler: src/handlers.updateProduct
+  #   events:
+  #     - httpApi:
+  #         path: /product/{id}
+  #         method: put
+  # deleteProduct:
+  #   handler: src/handlers.deleteProduct
+  #   events:
+  #     - httpApi:
+  #         path: /product/{id}
+  #         method: delete
+  # listProduct:
+  #   handler: src/handlers.listProduct
+  #   events:
+  #     - httpApi:
+  #         path: /products
+  #         method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
