@@ -12,7 +12,7 @@
 <li>serverless-framework</li>
 
 <br>
-**Installation**
+<h3>Installation</h3>
 
  `$ git clone https://github.com/thebozturk/serverless-product-app.git`
 
@@ -21,11 +21,11 @@
  `$ npm install `
  <br>
  
- **Deploy**
+ <h3>Deploy</h3>
  
 `$ serverless deploy`
 
- **Endpoints**
+ <h2>Endpoints</h2>
  
 - POST /product - creates new product
 - GET /product/{id} - gets a product by id
